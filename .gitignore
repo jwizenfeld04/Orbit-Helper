@@ -1,0 +1,3 @@
+# Secrets (PS4 pairing, Sports Remote PIN) live only here. Keep your own backup of it.
+.env
+__pycache__/
