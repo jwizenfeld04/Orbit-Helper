@@ -1,0 +1,12 @@
+[Unit]
+Description=Orbit-Helper: Fire TV HDMI switching, Home button and game line for the Orbit home screen
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/python3 -I %h/Orbit-Helper/orbit_helper.py
+UMask=0077
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
