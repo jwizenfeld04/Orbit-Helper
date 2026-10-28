@@ -6,6 +6,12 @@ How to cut a release: [RELEASING.md](RELEASING.md).
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-10-28
+
+### Fixed
+
+- **Home button stopped opening Orbit.** `homewatch.sh` ignored repeat Home presses by subtracting millisecond timestamps, but the TV's shell only does 32-bit arithmetic: once the millisecond clock wrapped to a negative 32-bit value (on 2026-10-27, for about 25 days at a time), every Home press looked like a repeat and was ignored. It now uses only the clock's last 9 digits and treats a wrap-around as a new press.
+
 ## [1.0.0] - 2026-10-28
 
 The first public release.
@@ -31,5 +37,6 @@ The first public release.
 - `GET /glance` and `POST /glance/launch`: Orbit's game line and weather, and starting a game through Sports Remote.
 - Keeps `homewatch.sh` running on the TV: Home goes to Orbit, a lost HDMI picture goes back to the launcher, and Spotify opening itself (Alexa, Spotify Connect) goes to Orbit's idle mode.
 
-[Unreleased]: https://github.com/jwizenfeld04/Orbit-Helper/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/jwizenfeld04/Orbit-Helper/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/jwizenfeld04/Orbit-Helper/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/jwizenfeld04/Orbit-Helper/releases/tag/v1.0.0
