@@ -50,7 +50,7 @@ while read -r line; do
     *"START u0"*"cmp=com.amazon.tv.launcher/.ui.HomeActivity_vNext"*)
       # Home fires two START lines ~200 ms apart; act once. The TV's shell does 32-bit arithmetic, so use only
       # the last 9 digits of the millisecond clock (it wraps every ~11.5 days: a negative gap counts as long ago).
-      ms=$(date +%s%3N); now=$((10#${ms#????}))
+      ms=$(date +%s%3N); now=$(echo "${ms#????}" | sed "s/^0*//"); now=${now:-0}
       gap=$((now - last))
       if [ $gap -gt 1500 ] || [ $gap -lt 0 ]; then
         last=$now
